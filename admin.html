@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Usuarios | Turtle Conver</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="logo" href="./home.html">
+        <div class="logo-badge">🐢</div>
+        <div class="logo-text">Turtle Conver</div>
+      </a>
+      <div style="display:flex; gap:10px; align-items:center">
+        <div class="pill">Panel Admin</div>
+        <a class="btn" href="http://localhost:3000/api/docs" target="_blank" rel="noopener">Swagger</a>
+        <button id="logout" class="btn">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <h1>Gestión de usuarios</h1>
+    <p class="sub">Crea, edita y elimina usuarios. Solo accesible por rol <strong>admin</strong>.</p>
+
+    <form id="userForm" class="form" autocomplete="off">
+      <div class="row">
+        <input type="hidden" id="id" />
+        <div>
+          <label>Usuario</label>
+          <input id="username" class="input" type="text" placeholder="usuario" required />
+        </div>
+        <div>
+          <label>Contraseña</label>
+          <input id="password" class="input" type="password" placeholder="(requerida solo al crear)" />
+        </div>
+        <div>
+          <label>Rol</label>
+          <select id="role" class="input">
+            <option value="user">user</option>
+            <option value="admin">admin</option>
+          </select>
+        </div>
+      </div>
+      <div class="row" style="align-items:center">
+        <button class="btn" type="submit">Guardar</button>
+        <a href="#" id="cancel" class="btn" style="background:#ccc; color:#183028">Cancelar</a>
+      </div>
+    </form>
+
+    <div class="section">Usuarios</div>
+    <div class="form">
+      <table id="usersTable" style="width:100%; border-collapse:collapse">
+        <thead>
+          <tr style="text-align:left">
+            <th style="padding:8px">ID</th>
+            <th style="padding:8px">Usuario</th>
+            <th style="padding:8px">Rol</th>
+            <th style="padding:8px">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="usersBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script type="module">
+    import './assets/admin.js';
+    // Logout
+    document.getElementById('logout').addEventListener('click', ()=>{
+      localStorage.removeItem('tc_token');
+      localStorage.removeItem('tc_user');
+      location.href = './index.html';
+    });
+  </script>
+</body>
+</html>

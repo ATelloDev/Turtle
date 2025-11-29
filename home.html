@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Herramientas PDF - Turtle Conver</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <style>
+    :root{
+      --turtle-50:#f3faf5;
+      --turtle-100:#e4f5ea;
+      --turtle-200:#c8ebd6;
+      --turtle-300:#a3ddb9;
+      --turtle-400:#7ccf9b;
+      --turtle-500:#2fb76d;
+      --turtle-600:#1f8b56;
+      --turtle-700:#2e824d;
+      --turtle-800:#25673d;
+      --turtle-900:#1d5231;
+      --ink:#183028;
+      --red:#ff5a5f;
+      --purple:#8a4dff;
+      --blue:#4d7cff;
+      --orange:#ff8a4d;
+      --yellow:#ffc04d;
+      --green:#2fb76d;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background: radial-gradient(1200px 800px at 80% -10%, var(--turtle-100), transparent),
+                  radial-gradient(1200px 800px at -20% 120%, var(--turtle-200), transparent),
+                  linear-gradient(160deg, var(--turtle-50), #ffffff 60%);
+    }
+
+    .container{ max-width:1200px; margin:0 auto; padding:24px; }
+
+    header{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding-bottom:16px; border-bottom:1px solid var(--turtle-200); }
+
+    .logo{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .logo-badge{ width:40px; height:40px; border-radius:12px; display:grid; place-items:center; color:#fff;
+      background: linear-gradient(135deg, var(--turtle-600), var(--turtle-500)); box-shadow:0 8px 20px rgba(47,183,109,.25); }
+    .logo-text{ font-weight:700; color:var(--turtle-800); font-size:20px; }
+
+    .user-menu{ display:flex; align-items:center; gap:12px; }
+    .pill{ padding:8px 12px; border-radius:999px; background:#ecf8f0; color:#2f7f5a; font-size:12px; font-weight:600; }
+    .avatar{ width:40px; height:40px; border-radius:50%; background:var(--turtle-100); color:var(--turtle-600); display:grid; place-items:center; font-weight:700; }
+
+    h1{ margin:20px 0 6px; font-size:26px; color:var(--turtle-800); }
+    .sub{ margin:0 0 20px; color:#3a7356; }
+
+    .section{ margin:26px 0 10px; color:var(--turtle-700); font-weight:600; }
+
+    .grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:16px; }
+
+    .card{ background:#fff; border:1px solid var(--turtle-100); border-radius:14px; padding:16px; cursor:pointer;
+      box-shadow:0 4px 12px rgba(0,0,0,.05); transition:transform .18s, box-shadow .18s; }
+    .card:hover{ transform: translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,.08); }
+
+    .ic{ width:44px; height:44px; border-radius:12px; display:grid; place-items:center; color:#fff; margin-bottom:10px; font-size:18px; }
+    .red{background:var(--red)} .purple{background:var(--purple)} .blue{background:var(--blue)} .orange{background:var(--orange)} .yellow{background:var(--yellow)} .green{background:var(--green)}
+
+    .card h3{ margin:0 0 6px; font-size:16px; color:var(--turtle-800); }
+    .card p{ margin:0; font-size:13px; color:var(--turtle-700); }
+
+    .search-wrap{ max-width:520px; }
+    .search{ display:flex; align-items:center; gap:10px; background:#fff; border:1px solid var(--turtle-200); border-radius:12px; padding:10px 12px;
+      box-shadow:0 4px 12px rgba(0,0,0,.05); }
+    .search i{ color:var(--turtle-600); }
+    .search input{ flex:1; border:0; outline:0; background:transparent; font-size:14px; color:var(--ink); }
+
+    @media (max-width: 768px){ .container{ padding:16px; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="logo" href="#">
+        <div class="logo-badge"><i class="fa-solid fa-leaf"></i></div>
+        <div class="logo-text">Turtle Conver</div>
+      </a>
+      <div class="user-menu">
+        <div class="pill">Verde tortuga</div>
+        <div class="avatar" id="avatar">TC</div>
+      </div>
+    </header>
+
+    <h1>Herramientas PDF</h1>
+    <p class="sub">Selecciona una herramienta para comenzar.</p>
+    <div class="search-wrap">
+      <div class="search" role="search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input id="search" type="search" placeholder="Buscar herramientas (p. ej., unir, firmar, convertir)" aria-label="Buscar herramientas" />
+      </div>
+    </div>
+
+    <div class="section">Comprimir</div>
+    <div class="grid">
+      <a class="card" href="./tools/compress.html"><div class="ic red"><i class="fa-solid fa-compress"></i></div><h3>Comprimir PDF</h3><p>Reduce el tamaño de tus archivos.</p></a>
+    </div>
+
+    <div class="section">Organizar</div>
+    <div class="grid">
+      <a class="card" href="./tools/merge.html"><div class="ic purple"><i class="fa-solid fa-object-group"></i></div><h3>Unir PDF</h3><p>Combina múltiples documentos.</p></a>
+      <a class="card" href="./tools/split.html"><div class="ic blue"><i class="fa-solid fa-scissors"></i></div><h3>Dividir PDF</h3><p>Separa páginas específicas.</p></a>
+      <a class="card" href="./tools/rotate.html"><div class="ic orange"><i class="fa-solid fa-rotate"></i></div><h3>Girar PDF</h3><p>Corrige la orientación.</p></a>
+      <a class="card" href="./tools/delete-pages.html"><div class="ic green"><i class="fa-regular fa-file-lines"></i></div><h3>Eliminar páginas</h3><p>Quita lo que no necesitas.</p></a>
+    </div>
+
+    <div class="section">Ver y editar</div>
+    <div class="grid">
+      <a class="card" href="./tools/edit.html"><div class="ic orange"><i class="fa-solid fa-pen"></i></div><h3>Editar PDF</h3><p>Modifica texto e imágenes.</p></a>
+      <a class="card" href="./tools/annotate.html"><div class="ic yellow"><i class="fa-regular fa-pen-to-square"></i></div><h3>Anotar PDF</h3><p>Resalta y comenta.</p></a>
+      <a class="card" href="./tools/reader.html"><div class="ic blue"><i class="fa-solid fa-book-open"></i></div><h3>Lector de PDF</h3><p>Visualiza con comodidad.</p></a>
+    </div>
+
+    <div class="section">Convertir desde PDF</div>
+    <div class="grid">
+      <a class="card" href="./tools/pdf-to-word.html"><div class="ic yellow"><i class="fa-regular fa-file-word"></i></div><h3>PDF a Word</h3><p>Convierte a documentos editables.</p></a>
+      <a class="card" href="./tools/pdf-to-images.html"><div class="ic green"><i class="fa-regular fa-image"></i></div><h3>PDF a Imágenes</h3><p>Exporta como JPG o PNG.</p></a>
+    </div>
+
+    <div class="section">Convertir a PDF</div>
+    <div class="grid">
+      <a class="card" href="./tools/word-to-pdf.html"><div class="ic red"><i class="fa-regular fa-file-pdf"></i></div><h3>Word a PDF</h3><p>De DOCX a PDF.</p></a>
+      <a class="card" href="./tools/images-to-pdf.html"><div class="ic blue"><i class="fa-solid fa-images"></i></div><h3>Imágenes a PDF</h3><p>Combina imágenes en un PDF.</p></a>
+    </div>
+
+    <div class="section">Firmar</div>
+    <div class="grid">
+      <a class="card" href="./tools/sign.html"><div class="ic purple"><i class="fa-solid fa-signature"></i></div><h3>Firmar PDF</h3><p>Agrega tu firma electrónica.</p></a>
+      <a class="card" href="./tools/request-signatures.html"><div class="ic orange"><i class="fa-solid fa-file-signature"></i></div><h3>Solicitar firmas</h3><p>Envía para firmar.</p></a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((c, i) => {
+        c.style.opacity = '0';
+        c.style.transform = 'translateY(10px)';
+        c.style.transition = `opacity .3s ease ${i*0.04}s, transform .3s ease ${i*0.04}s`;
+        setTimeout(() => { c.style.opacity = '1'; c.style.transform = 'translateY(0)'; }, 60);
+      });
+      const u = sessionStorage.getItem('turtle_conver_last') || localStorage.getItem('turtle_conver_users')?.match(/\w+/)?.[0] || 'TC';
+      const av = document.getElementById('avatar');
+      av.textContent = (u[0] || 'T').toUpperCase();
+
+      // Buscador de herramientas
+      const input = document.getElementById('search');
+      const sections = document.querySelectorAll('.section');
+      function applyFilter(q){
+        const term = (q || '').toLowerCase().trim();
+        document.querySelectorAll('.card').forEach(card => {
+          const text = (card.innerText || '').toLowerCase();
+          const match = !term || text.includes(term);
+          card.style.display = match ? '' : 'none';
+        });
+        // Ocultar secciones vacías
+        sections.forEach(sec => {
+          const grid = sec.nextElementSibling;
+          if(!grid) return;
+          const visibles = Array.from(grid.querySelectorAll('.card')).some(c => c.style.display !== 'none');
+          sec.style.display = visibles ? '' : 'none';
+          grid.style.display = visibles ? '' : 'none';
+        });
+      }
+      input.addEventListener('input', (e)=> applyFilter(e.target.value));
+      applyFilter('');
+    });
+  </script>
+</body>
+</html>
